@@ -1,0 +1,14 @@
+---
+# tasks file for hosts
+
+- name: "update /etc/hosts"
+  lineinfile: 
+    path: /etc/hosts
+    state: "{{ item.state | default('present') }}"
+    line: "{{ item.ip }} {{item.name}}"
+    regexp: "^{{ item .ip }}"
+  with_items: "{{ etc_hosts.hosts }}"
+  when:
+    - etc_hosts is defined
+    - etc_hosts.hosts is defined
+
