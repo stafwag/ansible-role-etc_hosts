@@ -1,0 +1,20 @@
+- name: "Escape dot in the ip adresss"
+  set_fact:
+    _ip_regex:
+      "{{ item.ip | regex_replace('\\.','\\.' ) }}"
+
+- name: "Display the ip_regex var"
+  debug:
+    msg:
+      - '_ip = {{ _ip_regex }}'
+  tags:
+    - never
+    - debug
+
+- name: "update /etc/hosts {{ item.ip }} {{ item.name }}"
+  lineinfile:
+    path: /etc/hosts
+    state: "{{ item.state | default('present') }}"
+    line: "{{ item.ip }} {{ item.name }}"
+    regexp: "^{{ _ip_regex }}\\s+{{ item.name}}"
+
