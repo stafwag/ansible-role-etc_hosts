@@ -1,45 +1,39 @@
 galaxy_info:
   role_name: etc_hosts
+  namespace: stafwag
+  company: mask27.dev
   author: staf wagemakers <staf@wagemakers.be>
   description: manage /etc/hosts
   license: license BSD, MIT)
-  min_ansible_version: 2.4
+  min_ansible_version: "2.4"
   platforms:
     - name: EL
       versions:
-        - all
+        - "all"
     - name: Fedora
       versions:
-        - all
+        - "all"
     - name: Debian
       versions:
-        - all
+        - "all"
     - name: Ubuntu
       versions:
-        - all
+        - "all"
     - name: opensuse
       versions:
-        - all
+        - "all"
     - name: SLES
       versions:
-        - all
-    - name: Archlinux
+        - "all"
+    - name: ArchLinux
       versions:
-        - all
+        - "all"
     - name: FreeBSD
       versions:
-        - 10.0
-        - 10.1
-        - 10.2
-        - 10.3
-        - 10.4
-        - 11.0
-        - 11.1
-        - 11.2
-        - 12.0
+        - "all"
     - name: OpenBSD
       versions:
-        - all
+        - "all"
   galaxy_tags:
     - system
     - packaging

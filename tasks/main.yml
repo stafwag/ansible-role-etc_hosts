@@ -1,7 +1,7 @@
 ---
 # tasks file for hosts
 - name: Update /etc/hosts
-  include_tasks: etc_hosts_line.yml
+  ansible.builtin.include_tasks: etc_hosts_line.yml
   with_items: "{{ etc_hosts.hosts }}"
   when:
     - etc_hosts is defined
