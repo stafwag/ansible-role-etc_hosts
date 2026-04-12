@@ -1,0 +1,11 @@
+- name: Configure /etc/hosts on dmz systems
+  hosts: all
+  become: true
+  vars:
+    etc_hosts:
+      hosts:
+        - { name: "localhost", ip: "127.0.0.1", state: "present" }
+        - { name: "stafgit", ip: "10.10.10.10", state: "present" }
+        - { name: "stafmail", ip: "10.10.10.10", state: "absent" }
+  roles:
+    - stafwag.etc_hosts
