@@ -2,7 +2,7 @@
 - name: Escape dot in the ip adresss
   ansible.builtin.set_fact:
     _ip_regex:
-      "{{ item.ip | regex_replace('\.', '\.' ) }}"
+      "{{ item.ip | regex_replace('\\.', '\\.') }}"
 
 - name: Display the ip_regex var
   ansible.builtin.debug:
@@ -12,9 +12,11 @@
     - never
     - debug
 
-- name: "Update /etc/hosts {{ item.ip }} {{ item.name }}"
+- name: "{{ task_name }}"
   ansible.builtin.lineinfile:
     path: /etc/hosts
     state: "{{ item.state | default('present') }}"
     line: "{{ item.ip }} {{ item.name }}"
     regexp: "^{{ _ip_regex }}\\s+{{ item.name }}"
+  vars:
+    task_name: "Update /etc/hosts {{ item.ip }} {{ item.name }}"
