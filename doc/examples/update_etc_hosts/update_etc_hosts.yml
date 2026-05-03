@@ -1,4 +1,4 @@
-- name: Configure /etc/hosts on dmz systems
+- name: Configure /etc/hosts
   hosts: all
   become: true
   vars:
